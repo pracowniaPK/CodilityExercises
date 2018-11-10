@@ -13,6 +13,20 @@ def brackets(S):
         return 1
     return 0
 
+def stone_wall(H):
+    s = []
+    i = 0
+    for h in H:
+        while len(s) > 0 and s[-1] > h:
+            s.pop()
+        if len(s) == 0:
+            s.append(h)
+        elif s[-1] == h:
+            i += 1
+        elif s[-1] < h:
+            s.append(h)
+    return len(H) - i
+    
 def nesting(S):
     sum = 0
     for c in S:
